@@ -1,5 +1,5 @@
 import { db } from '@vercel/postgres';
-import { temperatureData } from '../lib/placeholder-data'; // Asegúrate de que la ruta sea correcta
+import { temperatureData } from '../lib/placeholder-data'; // Asegúrate de que la ruta sea corrcta
 
 const client = await db.connect();
 
