@@ -1,32 +1,15 @@
 import { db } from '@vercel/postgres';
 
-const client = await db.connect();
-
-async function insertTemperature(temperature: number) {
-  await client.sql`
-    INSERT INTO NTC (temperature)
-    VALUES (${temperature})
-    ON CONFLICT (id) DO NOTHING;  -- Asegúrate de que la tabla tiene un id único para evitar duplicados
-  `;
-}
-
-export async function POST(request: Request) {
+export async function GET() {
   try {
-    const { temperature } = await request.json(); // Obtiene la temperatura del cuerpo de la solicitud
+    // Realizar la consulta para obtener los datos de la tabla NTC
+    const result = await db.sql`SELECT * FROM NTC`;
+    const temperatures = result.rows;
 
-    if (typeof temperature !== 'number') {
-      return new Response(JSON.stringify({ error: 'Invalid temperature value' }), { status: 400 });
-    }
-
-    await client.sql`BEGIN`;
-    await insertTemperature(temperature);
-    await client.sql`COMMIT`;
-
-    return new Response(JSON.stringify({ message: 'Temperature inserted successfully' }), { status: 200 });
+    // Devolver los datos en formato JSON
+    return new Response(JSON.stringify(temperatures), { status: 200 });
   } catch (error) {
-    await client.sql`ROLLBACK`;
-    // Modificamos aquí para ignorar el error y devolver un mensaje genérico
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
+    // Manejar errores y devolver un mensaje de error simple
+    return new Response('Error al obtener los datos', { status: 500 });
   }
 }
-
