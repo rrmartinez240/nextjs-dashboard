@@ -25,6 +25,8 @@ export async function POST(request: Request) {
     return new Response(JSON.stringify({ message: 'Temperature inserted successfully' }), { status: 200 });
   } catch (error) {
     await client.sql`ROLLBACK`;
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    // Modificamos aquí para ignorar el error y devolver un mensaje genérico
+    return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
   }
 }
+
