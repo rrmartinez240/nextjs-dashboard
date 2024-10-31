@@ -6,7 +6,7 @@ export async function GET() {
   const client = await db.connect();
 
   try {
-    const result = await client.sql`SELECT * FROM NTC ORDER BY timestamp DESC`;
+    const result = await client.sql`SELECT * FROM ntc ORDER BY timestamp DESC`;
     return new Response(JSON.stringify(result.rows), { status: 200 });
   } catch (error) {
     console.error('Error fetching data:', error);
