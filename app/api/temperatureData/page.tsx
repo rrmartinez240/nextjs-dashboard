@@ -9,12 +9,21 @@ export default function TemperaturesPage() {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch('/api/temperatureData/getTemperature');
-      if (res.ok) {
-        const data = await res.json();
-        setTemperatures(data);
-      } else {
-        console.error("Failed to fetch data");
+      // Cambia la URL según el entorno
+      const apiUrl = process.env.NODE_ENV === 'production' 
+          ? 'https://nextjs-dashboard-iota-one-79.vercel.app/api/temperatureData/getTemperature' 
+          : 'http://localhost:3000/api/temperatureData/getTemperature';
+
+      try {
+        const res = await fetch(apiUrl);
+        if (res.ok) {
+          const data = await res.json();
+          setTemperatures(data);
+        } else {
+          console.error("Failed to fetch data", res.statusText);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
     }
     fetchData();
