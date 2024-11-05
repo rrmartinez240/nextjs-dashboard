@@ -1,4 +1,4 @@
-"use client"; // Directiva para indicar que este es un componente de cliente
+"use client"; // Directiva para indicar que este es un componente de cliente 
 import { useEffect, useState } from 'react';
 import styles from './page.module.css'; // Importar el CSS como módulo
 
@@ -7,11 +7,11 @@ interface TemperatureData {
   temperature: number;  // Tipo de dato para temperatura
   timestamp: string;    // Tipo de dato para timestamp
 }
-//hola
+
 export default function Home() {
   const [data, setData] = useState<TemperatureData[]>([]); // Estado para almacenar datos
   const [loading, setLoading] = useState<boolean>(true);    // Estado para cargar
-  const [error, setError] = useState<string | null>(null);   // Estado para erroresss
+  const [error, setError] = useState<string | null>(null);   // Estado para errores
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,57 +1,41 @@
 /* Estilos generales */
-body {
+.container {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 800px;
-  margin: auto;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para el título */
 .title {
-  text-align: center;
   color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-/* Estilos para la tabla */
+.loading {
+  color: #0070f3;
+  font-size: 18px;
+}
+
+.error {
+  color: red;
+  font-size: 18px;
+}
+
 .temperatureTable {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-.temperatureTable th,
-.temperatureTable td {
+.temperatureTable th, .temperatureTable td {
   border: 1px solid #ddd;
-  padding: 12px;
+  padding: 8px;
   text-align: left;
 }
 
 .temperatureTable th {
-  background-color: #007bff;
+  background-color: #0070f3;
   color: white;
-  font-weight: bold;
-}
-
-.temperatureTable tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.temperatureTable tr:hover {
-  background-color: #ddd;
-}
-
-/* Estilos para mensajes de carga y error */
-.loading, .error {
-  text-align: center;
-  color: #666;
-  font-size: 18px;
 }
