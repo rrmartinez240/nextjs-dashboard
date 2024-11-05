@@ -11,7 +11,7 @@ interface TemperatureData {
 export default function Home() {
   const [data, setData] = useState<TemperatureData[]>([]); // Estado para almacenar datos
   const [loading, setLoading] = useState<boolean>(true);    // Estado para cargar
-  const [error, setError] = useState<string | null>(null);   // Estado para errores
+  const [error, setError] = useState<string | null>(null);   // Estado para erroresss
 
   useEffect(() => {
     const fetchData = async () => {
