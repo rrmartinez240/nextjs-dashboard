@@ -7,7 +7,7 @@ interface TemperatureData {
   temperature: number;  // Tipo de dato para temperatura
   timestamp: string;    // Tipo de dato para timestamp
 }
-
+//hola
 export default function Home() {
   const [data, setData] = useState<TemperatureData[]>([]); // Estado para almacenar datos
   const [loading, setLoading] = useState<boolean>(true);    // Estado para cargar
